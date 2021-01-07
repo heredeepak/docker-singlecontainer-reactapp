@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t heredeepak/docker-singlecontainer-reactapp -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true heredeepak/docker-singlecontainer-reactapp npm run test
